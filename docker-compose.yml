@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+
+  web:
+    image: web
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+    ports:
+      - 80:80
+    environment:
+      - DEBUG=True
+      - PYTHONUNBUFFERED=0
+      - PORT=80
+      - IMAGE_FORMAT=PNG
+    command: python3 api.py
