@@ -16,4 +16,5 @@ services:
       - PYTHONUNBUFFERED=0
       - PORT=80
       - IMAGE_FORMAT=PNG
+      - MODE=CMYK
     command: python3 api.py

@@ -11,6 +11,7 @@ from color_diversity import (
 env = os.environ
 DEBUG = env['DEBUG'] in ['1', 'True', 'true']
 IMAGE_FORMAT = env['IMAGE_FORMAT']
+MODE = env['MODE']
 
 api = responder.API(debug=DEBUG)
 diversifier = ColorDiversifier()
@@ -18,8 +19,8 @@ diversifier = ColorDiversifier()
 
 def diversify(bytes_io):
     img = load_img(bytes_io)
-    imgs = diversifier.diversify(img)
-    return compress_imgs(imgs, format_=IMAGE_FORMAT)
+    imgs = diversifier.diversify(img, mode=MODE)
+    return compress_imgs(imgs, format_=IMAGE_FORMAT, mode=MODE)
 
 
 @api.route("/")
